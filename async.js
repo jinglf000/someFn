@@ -38,7 +38,18 @@ async function test() {
   }
   console.log(qq1);
   console.log(8);
+  throw new Error('出错啦出错啦~~');
 }
 console.log(1);
-test();
+
+test().then(() => {
+    console.log('test then')
+}).catch(() => {
+    console.log('test catch');
+})
 console.log(2);
+
+// test 函数执行完成返回的仍是promise，如果test()没有catch来捕获异常
+// 程序会报错
+// 
+// 
