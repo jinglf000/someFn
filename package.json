@@ -1,0 +1,26 @@
+{
+  "name": "somefn",
+  "version": "1.0.0",
+  "description": "一些工具函数的实现",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinglf000/someFn.git"
+  },
+  "keywords": [
+    "function",
+    "工具函数"
+  ],
+  "author": "jinglf000",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinglf000/someFn/issues"
+  },
+  "homepage": "https://github.com/jinglf000/someFn#readme",
+  "dependencies": {
+    "jest": "^22.2.1"
+  }
+}
