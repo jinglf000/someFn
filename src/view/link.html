@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>link style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    a:link {
+      color: #ccc;
+    }
+    a:hover {
+      color: red;
+    }
+    a:active {
+      color: yellow;
+    }
+    a:visited {
+      color:green;
+    }
+    .box-wrap {
+      border: 1px solid rebeccapurple;
+      /* overflow: auto; */
+    }
+    .clearfix:after{
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      clear: both;
+    }
+    .box {
+      width: 240px;
+      height: 240px;
+      background-color: yellowgreen;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <a href="http://www.tming.win">这是一个百度的链接，百度一下你就知道</a>
+  <br>
+  <a href="http://www.google.com">这是一个百度的链接，百度一下你就知道</a>
+  <br>
+  <a href="http://mingtian.com">网络之上</a>
+  <br>
+  <a >dsds没有href属性</a>
+  <div class="box-wrap clearfix">
+    <div class="box"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>块级元素和内联元素</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .inline {
+      display: inline;
+      width: 300px;
+      height: 25px;
+      padding:15px;
+      margin: 66px;
+      /* font-size: 0; */
+      background-color: red;
+    }
+    .block {
+      display: block;
+      width: 300px;
+      height: 25px;
+      background-color: green;
+      margin: 8px;
+    }
+    .inline-block {
+      display: inline-block;
+      width: 300px;
+      height: 25px;
+      background-color: goldenrod;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    <span class="block">block</span>
+    <span class="inline">inline</span>
+    <span class="block">block</span>
+    <span class="inline-block">inline-block</span>
+  </p>
+</body>
+</html>
