@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MVVM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <input type="text" id="input">
+  <p id="p"></p>
+  <script>
+    var input = document.getElementById('input');
+    var p = document.getElementById('p');
+    var dataBus = {};
+    var obj = {
+      get input() {
+        return dataBus.__input__;
+      },
+      set input(val) {
+        dataBus.__input__ = val;
+        // 更新DOM
+        p.innerText = val;
+      }
+    };
+    input.addEventListener('input', function () {
+      obj.input = this.value;
+    });
+    obj.input = 'ini value 初始化的值，使用了getter 和 setter 来实现';
+
+  </script>
+</body>
+
+</html>
