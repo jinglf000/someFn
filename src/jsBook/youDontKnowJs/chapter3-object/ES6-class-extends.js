@@ -48,7 +48,7 @@ class Car extends Vehicle {
 Car.needOil = true;
 
 var bmw = new Car('coupe', 'bwm');
-
+var dazhong = new Car('coup', 'dazhong');
 // console.log(Object.getPrototypeOf(bmw) === Car); // false
 // console.log(Object.getPrototypeOf(bmw) === Vehicle); // false呼应了ES6继承的实质
 
@@ -81,4 +81,7 @@ function classExtendsInstance() {
   Object.setPrototypeOf(B, A); // B.__proto__ === A
 
   const b = new B();
+
+  //const x = Object.create(A);
+  // x.__proto__ === A
 }
