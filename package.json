@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/jinglf000/someFn#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "jest": "^22.2.1"
   }
 }
