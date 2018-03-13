@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Error Test</title>
+</head>
+<body>
+  <h2 style="text-align: center">Error test</h2>
+  <p>错误测试</p>
+  <button>点击</button>
+  <script>
+    ErrorTest()
+    function errorTest() {
+      a * 8;
+    }
+    console.log('程序运行至此');
+    console.log(89 * 8);
+    setTimeout(() => {
+      console.log('调用了errorTest函数了');
+      errorTest();
+    }, 0);
+  </script>
+  <script src="./a.js"></script>
+</body>
+</html>
