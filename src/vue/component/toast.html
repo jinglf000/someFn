@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VUE toast</title>
+  <script src="../vue.min.js"></script>
+  <style>
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: all ease-in 1.5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <button @click="clickHandle">点击</button>
+    <transition name="fade">
+      <p v-show="visible">{{msg}}</p>
+    </transition>
+  </div>
+  <script>
+    var box = document.getElementById('box');
+    new Vue({
+      el: box,
+      data: {
+        visible: false,
+        msg: '这是一个message'
+      },
+      methods: {
+        clickHandle() {
+          console.log();
+          this.visible = !this.visible;
+          showToast('-/-/-|-');
+        }
+      }
+    });
+
+    var Toast = Vue.extend({
+      template: '<transition name="fade"><p class="toast" v-show="visible">{{message}}</p></transition>',
+      data() {
+        return {
+          visible: false
+        }
+      },
+      props: {
+        message: {
+          type: String,
+          default: '默认信息'
+        }
+      }
+    });
+
+    function showToast(msg) {
+      var instance = new Toast({
+        el: document.createElement('div')
+      });
+      instance.message = msg;
+      document.body.appendChild(instance.$el);
+      Vue.nextTick(() => {
+        instance.visible = true;
+      })
+    }
+
+  </script>
+</body>
+</html>
