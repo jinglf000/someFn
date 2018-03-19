@@ -18,35 +18,75 @@
     .fade-leave-active {
       transition: all ease-in 1.5s;
     }
+    .toast,
+    .text {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
   <div id="box">
+    <progress max="100"  :value="progress">56%</progress>
     <button @click="clickHandle">点击</button>
     <transition name="fade">
-      <p v-show="visible">{{msg}}</p>
+      <p v-show="visible" class="text">{{msg}}</p>
     </transition>
   </div>
   <script>
+    function printObj(obj) {
+      var back = {};
+      // for (var i in obj) {
+      //   back[i] = (typeof obj[i] === 'object' ? `--------${i}` : obj[i]);
+      // }
+      // console.log(JSON.stringify(back, null, 2));
+      console.log(obj);
+
+    }
     var box = document.getElementById('box');
-    new Vue({
+    var vms = [];
+    var vm1 = new Vue({
       el: box,
       data: {
         visible: false,
-        msg: '这是一个message'
+        msg: '这是一个message',
+        progress: 50
       },
       methods: {
-        clickHandle() {
+        clickHandle: function () {
           console.log();
           this.visible = !this.visible;
-          showToast('-/-/-|-');
+          vms.push(showToast('-/-/-|-'));
+          this.progressAdd();
+        },
+        progressAdd: function (tip) {
+          this.progress += tip || 0.1;
         }
-      }
-    });
+      },
+      beforeCreate() {
+        printObj(this);
+      },
+      created: function () {
+        printObj(this);
+        var _this = this;
+        var timer = setInterval(function() {
+          _this.progressAdd();
+          if (_this.progress >= 100) {
+            clearInterval(timer);
+          }
+        }, 100);
 
+      },
+      beforeMount() {
+        printObj(this);
+      },
+      mounted() {
+        printObj(this);
+      },
+    });
+    var vm2 = new Vue({});
     var Toast = Vue.extend({
       template: '<transition name="fade"><p class="toast" v-show="visible">{{message}}</p></transition>',
-      data() {
+      data: function () {
         return {
           visible: false
         }
@@ -67,8 +107,10 @@
       document.body.appendChild(instance.$el);
       Vue.nextTick(() => {
         instance.visible = true;
-      })
+      });
+      return instance;
     }
+
 
   </script>
 </body>
