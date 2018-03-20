@@ -678,6 +678,7 @@ var uid = 0;
  * directives subscribing to it.
  */
 var Dep = function Dep () {
+  debugger;
   this.id = uid++;
   this.subs = [];
 };
@@ -3090,6 +3091,7 @@ var Watcher = function Watcher (
   if (isRenderWatcher) {
     vm._watcher = this;
   }
+  debugger;
   vm._watchers.push(this);
   // options
   if (options) {

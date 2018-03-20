@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>template</title>
+  <style>
+    .text {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="text">template 模板</h2>
+  <div id="box">
+
+  </div>
+  <script type="text/html" id="temp">
+    <p><%=data.msg%></p>
+    <%for(var i = 0; i < list.length; i ++){%>
+      <p><%=list[i]%></p>
+    <%}%>
+    <p>这是一个模板引擎的模板</p>
+    <p><%=data.age%></p>
+  </script>
+  <script src="./template-native.js"></script>
+  <script>
+    var temp = document.getElementById('temp');
+    var str = temp.innerText;
+    var render = template.compile(temp.innerHTML, {
+      openTag: '<%',
+      closeTag: '%>'
+    });
+  </script>
+</body>
+</html>
