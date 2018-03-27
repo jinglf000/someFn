@@ -678,7 +678,7 @@ var uid = 0;
  * directives subscribing to it.
  */
 var Dep = function Dep () {
-  debugger;
+  
   this.id = uid++;
   this.subs = [];
 };
@@ -8525,6 +8525,7 @@ Vue.prototype.$mount = function (
   el,
   hydrating
 ) {
+  
   el = el && inBrowser ? query(el) : undefined;
   return mountComponent(this, el, hydrating)
 };
@@ -10865,7 +10866,7 @@ Vue.prototype.$mount = function (
   hydrating
 ) {
   el = el && query(el);
-
+  
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
     "development" !== 'production' && warn(
