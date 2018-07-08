@@ -47,7 +47,9 @@ toString = Object.prototype.toString
 // for (let i in map) { console.log(i) }// map虽然是Map数据类型，同时也是对象，可以使用for in 对对象进行循环遍历
 // for (let i of map.values()) { console.log(i)} // for of 主要针对于遍历器：values() keys() entries() 
 // 当使用for...of循环遍历某种数据结构时，该循环会自动去寻找 Iterator 接口。会不断的调用Iterator接口的next方法获取值，
-// 进而实现了遍历
+// 进而实现了遍历、而方法本身不会返回，固定的数组，方法只是提供了一层接口，供for...of 循环进行遍历，for of 每次循环
+// 都会调iterator 的next 方法获取以遍历的内容。values() keys() entries() 方法的调用临时重置了遍历器接口。
+// http://es6.ruanyifeng.com/#docs/iterator
 
 var it = makeIterator(['a', 'b']);
 
@@ -58,8 +60,8 @@ function makeIterator(arr) {
 		[Symbol.iterator]() {
 			return {
 				next() {
-					return index ++ < arr.length ? 
-					{ value: arr[index], done: false } :
+					return index < arr.length ? 
+					{ value: arr[index ++], done: false } :
 					{ value: undefined, done: true }
 				}
 			}
@@ -67,4 +69,7 @@ function makeIterator(arr) {
 	}
 }
 
-for (let i of it()) console.log(i);
+
+// for (let i of it )console.log(i);
+
+let arrIterator = arr[Symbol.iterator]
