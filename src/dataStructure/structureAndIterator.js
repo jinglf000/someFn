@@ -1,3 +1,11 @@
+/*
+ * 内容参照自
+ * http://es6.ruanyifeng.com/#docs/iterator
+ * 一下实例
+ * @author jinglf000
+*/
+
+
 const set = new Set();
 const map = new Map();
 const obj = { name: 'My name is Object', age: 12 };
@@ -72,4 +80,54 @@ function makeIterator(arr) {
 
 // for (let i of it )console.log(i);
 
-let arrIterator = arr[Symbol.iterator]
+let arrIterator = arr[Symbol.iterator]();
+
+
+// console.log(arrIterator.next())
+// console.log(arrIterator.next())
+// console.log(arrIterator.next())
+// console.log(arrIterator.next())
+// console.log(arrIterator.next())
+// console.log(arrIterator.next())
+// console.log(arrIterator.next.toString());
+
+// 对象之所以能够进行for...of 循环是因为部署了itrerator 接口，即为对象的Symbol.iterator属性
+// 其为函数运行时返回包含next[方法]的对象。通过改写对象可以实现，自定义for of 遍历
+
+// 使用iterator 的地方
+
+const str = new String('just zlib');
+
+console.log([...str]);//  1、扩展运算
+
+// let [x, y] = set;// 2、解构赋值
+// console.log(x, y); 
+
+// let [q, ...m] = set;// 解构赋值
+
+// console.log(q, m);
+
+// let generator = function* () {
+// 	yield 1;
+// 	yield 
+// }
+
+// let iteratorGenerator = generator(); // yield function
+
+// console.log(iteratorGenerator.next());
+
+str[Symbol.iterator] = function () {// 字符串的扩展运算，内部使用的就是itreator
+	return {
+		next: function () {
+			console.log(`evaluete function ${this.index} times`);
+			if (this.index < 5) {
+				return { value: this.index ++, done: false }
+			} else {
+				return { value: this.index, done: true}
+			}
+		},
+		index: 1
+	}
+}
+
+console.log([...str]);
