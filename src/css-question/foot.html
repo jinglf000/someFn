@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Foot一只固定在底部 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      position: relative;
+      min-height: 100%;
+      padding-bottom: 180px;
+      box-sizing: border-box;
+    }
+    /* body:after {
+      content: ' ';
+      display: block;
+      height: 180px;
+      width: 100%;
+    } */
+    header {
+      height: 20px;
+      background-color: #324a8e;
+    }
+    main {
+      height: 600px;
+      background-color: #2a628e;
+    }
+    footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      height: 80px;
+      text-align: center;
+      background-color: #607396;
+      background: linear-gradient( 90deg,#00ce9e, #fca792);
+      line-height: 2;
+      color: #fff;
+      /* display: flex; */
+      /* flex-direction: column; */
+    }
+    footer p {
+      /* flex: 1; */
+      /* vertical-align: middle; */
+      /* line-height: 180px; */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      padding: 0 20px;
+      border-radius: 20px;
+      background: #607396;
+      border: 20px double #fff;
+      background-clip: border-box;
+    }
+    .box {
+      border-radius: 12px;
+      height: 180px;
+    }
+    .box1 {
+      background-color: #fca792;
+    }
+    .box2 {
+      background-color: #00ce9e;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="box"></header>
+  <main class="box"></main>
+  <!-- <div class="box box1"></div> -->
+  <!-- <div class="box box2"></div> -->
+  <footer class="box">
+    <p>copy right 2018©</p>
+  </footer>
+</body>
+
+</html>

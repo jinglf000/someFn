@@ -1,0 +1,71 @@
+@import './var.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+body:after {
+  content: ' ';
+  display: block;
+  height: $footer-h;
+  width: 100%;
+}
+a{
+  text-decoration: none;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+/* footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: $footer-h;
+  background-color: #333;
+  color: #eeeeee;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .text {
+    text-align: center;
+    flex: 0 0 0%;
+  }
+}
+.header {
+  background-color: #222;
+  .item {
+    color: rgba(#fff, 0.8);
+    display: inline-block;
+    padding: 20px 0;
+    margin: 0 20px;
+    position: relative;
+    transition: $transition;
+    &:hover {
+      color: #fff;
+    }
+    &:after{
+      content: ' ';
+      position: absolute;
+      transition: $transition;
+      bottom: 5px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: #fff;
+    }
+    &:hover:after {
+      width: 100%;
+    }
+  }
+
+}
+
