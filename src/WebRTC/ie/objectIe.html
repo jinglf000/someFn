@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object IE </title>
+  <style>
+    .camera_wrap {
+      /* display: none; */
+      position: relative;
+    }
+    .camera_wrap:after {
+      content: ' ';
+      width: 0;
+      height: 0;
+      display: block;
+      clear: both;
+    }
+    .object_wrap {
+      display: none;
+    }
+    .canvas {
+      border: 1px solid red;
+    }
+    .line {
+      width: 160px;
+      height: 160px;
+      position: absolute;
+      top: 120px;
+      left: 200px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="camera_wrap">
+    <div class="object_wrap">
+      <object id="camera" classid="CLSID:BD240530-860E-4E5D-8389-3FFC784F8B87" width="560" height="400" >
+      </object>
+    </div>
+    <div class="line"></div>
+    <div class="btn_wrap">
+      <button id="btn_open">打开摄像头</button>
+      <button id="btn_take">拍照</button>
+      <button id="btn_close">关闭摄像头</button>
+      <button id="btn_animation">间隔固定毫秒抓拍</button>
+      <input type="text" id="input" placeholder="输入固定的毫秒数" value="30">
+      <button id="btn_animation_close">关闭动态抓拍</button>
+      <button id="track">开始捕获</button>
+    </div>
+  </div>
+  <canvas id="canvas" class="canvas" width="560" height="400"></canvas>
+
+  <script src="./js/vendor.js"></script>
+  <script src="./js/cameraCard.js"></script>
+  <script src="./js/track/tracking.js"></script>
+  <script src="./js/track/data/face.js"></script>
+  <script>
+    /* jQuery DOM */
+    var $btnOpen = $('#btn_open');
+    var $btnTake = $('#btn_take');
+    var $btnClose = $('#btn_close');
+    var $btnAnimation = $('#btn_animation');
+    var $btnAnimationClose = $('#btn_animation_close');
+    var $canvas = $('#canvas');
+    var $track = $('#track');
+
+
+    /* variable */
+    var ctx = $canvas[0].getContext('2d');
+    var Camera = window.tools.Camera;
+
+    // /* tracker 配置捕获*/
+
+
+    // carema实例
+    var cameraInstance = new Camera($('#camera')[0]);
+    // 打开摄像头
+    $btnOpen.click(function () {
+      cameraInstance.open();
+    });
+    // 拍照并画到canvas里
+    $btnTake.click(function () {
+      takePictureAndDraw();
+    });
+    // 关闭摄像头
+    $btnClose.click(function () {
+      cameraInstance.close();
+    });
+    var timer = null;
+    // 定时抓拍
+    $btnAnimation.click(function () {
+      var time = $('#input').val();
+      clearInterval(timer);
+      timer = setInterval(function () {
+        takePictureAndDraw();
+      }, time);
+    });
+    //关闭定时抓拍
+    $btnAnimationClose.click(function () {
+      clearInterval(timer);
+    });
+    // 开始捕获
+    $track.click(function () {
+      trackFace();
+    });
+    // 捕获人脸
+    function trackFace() {
+      var tracker = new tracking.ObjectTracker(['face']);
+      tracker.setStepSize(1.7);
+
+      tracking.track('#canvas', tracker);
+      tracker.on('track', function (event) {
+        event.data.forEach(function (rect) {
+          console.log(rect);
+        });
+      });
+    }
+
+    // 抓拍照片，并把照片显示在canvas里面
+    function takePictureAndDraw(){
+      cameraInstance.takePhoto().done(function (res) {
+        var image = new Image();
+        image.onload = function () {
+          ctx.drawImage(image, 0, 0);
+        }
+        image.src = 'data:image/jpg;base64,' + res;
+      });
+    }
+  </script>
+</body>
+</html>

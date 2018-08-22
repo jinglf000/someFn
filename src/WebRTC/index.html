@@ -12,8 +12,33 @@
   <h1>Web RTC</h1>
   <video autoplay playsinline></video>
   <canvas id="photo" width="640" height="480"></canvas>
+  <canvas id="cover" width="640" height="480"></canvas>
   <button id="btn">点击截图</button>
+  <button id="btn_track">点击捕获</button>
   <!-- <script src="./main.js"></script> -->
   <script src="./getPhoto.js"></script>
+  <script src="./ie/js/track/tracking.js"></script>
+  <script src="./ie/js/track/data/face-min.js"></script>
+  <script>
+    var btnTrack = document.getElementById('btn_track');
+    var canvas = document.getElementById('photo');
+    var cover = document.getElementById('cover');
+
+    var coverCtx = cover.getContext('2d');
+    var tracker = new tracking.ObjectTracker(['face']);
+    tracker.setStepSize(1.7);
+
+    // track
+    btnTrack.addEventListener('click', function () {
+      tracking.track(canvas, tracker);
+    });
+    tracker.on('track', function (event) {
+      console.log(event.data);
+      event.data.forEach(function (item) {
+        coverCtx.strokeStyle = '#ff0000';
+        coverCtx.strokeRect(item.x, item.y, item.width, item.height);
+      });
+    });
+  </script>
 </body>
 </html>
