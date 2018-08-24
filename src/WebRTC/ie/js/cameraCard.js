@@ -136,7 +136,8 @@
     var deferred = new $.Deferred();
     // 拍照成功
     if (res) {
-      log.log('拍照成功' + res);
+      // log.log('拍照成功' + res);
+      log.log('拍照成功');
       deferred.resolve(res);
     } else {
       log.log('拍照失败');
