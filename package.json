@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "ie":  "gulp ie8",
     "dev": "gulp dev",
     "build": "gulp prod",
     "prod": "gulp prod"

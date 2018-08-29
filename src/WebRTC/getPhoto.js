@@ -21,7 +21,9 @@ grabWebCamVideo();
 
 // 人脸捕获
 var tracker = new tracking.ObjectTracker(['face']);
+tracker.setInitialScale(4);
 tracker.setStepSize(2);
+tracker.setEdgesDensity(0.1);
 // 捕获后内容绘制
 tracker.on('track', function (event) {
   console.log(event.data);
@@ -66,7 +68,6 @@ function snapPhoto() {
  * 显示视频流
  */
 function grabWebCamVideo() {
-  console.log('GETTING user media');
   navigator.mediaDevices.getUserMedia({ video: true})
   .then(stream => {
     video.srcObject = stream;

@@ -21,14 +21,16 @@ app.set('port', process.env.PORT || port);
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
-conf.dev.proxy.forEach(item => {
-  app.use(proxy(item.pathRules, {
-    target: item.target,
-    changeOrigin: true,
-    logLevel: 'debug',
-    logProvider: debug
-  }));
-});
+if (conf && conf.dev && conf.dev.proxy) {
+  conf.dev.proxy.forEach(item => {
+    app.use(proxy(item.pathRules, {
+      target: item.target,
+      changeOrigin: true,
+      logLevel: 'debug',
+      logProvider: debug
+    }));
+  });
+}
 
 app.listen(app.get('port'));
 

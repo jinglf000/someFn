@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+	<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+			<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
+			<meta content="C#" name="CODE_LANGUAGE">
+			<meta content="JavaScript" name="vs_defaultClientScript">
+      <meta http-equiv="X-UA-Compatible" content="IE=5">
+			<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+			<script language="javascript" id="clientEventHandlersJS"></script>
+			<TITLE>StartOcxDemo</TITLE>
+				<script type="text/javascript">
+
+	var IcType = 0;
+
+	function star_PinResetKey()
+	{
+		var port = Form1.Comm.value;
+		var ret = Form1.StartOcx.STAR_Pin_Reset( port, '0' , 9600);
+		alert("return = "+ret);
+	}
+
+	function star_InPutNum()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var iControlType = Form1.ControlType.value;
+
+		var ret = Form1.StartOcx.STAR_InputNumber(port, '0' , 9600,  iControlType, strvoice, 10);
+		alert("return = "+ret);
+	}
+
+	function star_PlayVoice()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+
+		var ret = Form1.StartOcx.STAR_PlayVoice(port, '0' , 9600, strvoice, 10);
+		alert("return = "+ret);
+	}
+
+	function star_GetPinpadSN()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_GetPinPadSN(port, '0' , 9600, 10);
+		alert("return = "+ret);
+		Form1.SN.value = Form1.StartOcx.sn;
+	}
+
+	function star_SetPinpadSN()
+	{
+		var port = Form1.Comm.value;
+		var sn = Form1.SN.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_SetPinPadSN(port, '0' , 9600, sn,  10);
+		alert("return = "+ret);
+	}
+
+	function star_ResetKey()
+	{
+		var port = Form1.Comm.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_ResetKey(port, '0' , 9600);
+		alert("return = "+ret);
+	}
+
+	function star_PinRead()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var times = Form1.Times.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_Read(port, '0' , 9600, times, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Pin.value = Form1.StartOcx.pin;
+
+	}
+
+	function star_PinDownLoadMkey()
+	{
+		var port = Form1.Comm.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var mkey = Form1.Mkey.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_DownLoadMkey(port, '0' , 9600, pintype, mkeyid, mkey, 10);
+		alert("return = "+ret);
+	}
+	function star_DownLoadWkey()
+	{
+		var port = Form1.Comm.value;
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var wkey = Form1.Wkey.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_DownLoadWkey( port, '0' , 9600, pintype, mkeyid, wkeyid, wkey, 10);
+		alert("return = "+ret);
+	}
+
+	function star_GetEncPin()
+	{
+		var port = Form1.Comm.value;
+		var times = Form1.Times.value;
+		var endtype = Form1.EndType.value;
+		var pinlen = Form1.PinLen.value;
+
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_GetEncPin( port, '0' , 9600, pintype, mkeyid, wkeyid, times, endtype, pinlen, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Key.value = Form1.StartOcx.EncPin;
+	}
+
+	function star_Ansi98GetPin()
+	{
+		var port = Form1.Comm.value;
+		var times = Form1.Times.value;
+		var endtype = Form1.EndType.value;
+		var pinlen = Form1.PinLen.value;
+
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var account = Form1.Account.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_Ansi98GetPin( port, '0' , 9600, pintype, mkeyid, wkeyid, times, endtype, pinlen, account, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Key.value = Form1.StartOcx.CipherPin;
+	}
+
+	function star_StartInfoHtml()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var modex = Form1.MODEX.value;
+		var isSign = Form1.ISSIGN.value;
+
+		var ret = Form1.StartOcx.STAR_StartInfoHtml(port, '0' , 9600, modex, strvoice, strinfo, isSign, 10);
+		alert("return = "+ret);
+		Form1.SignInfo.value = Form1.StartOcx.sResult;
+		Form1.inforesult.value = Form1.StartOcx.InfoResult;
+	}
+
+	function star_DownHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+		var filepath = Form1.FilePath.value;
+
+		var ret = Form1.StartOcx.STAR_DownHeadFile(port, '0' , 9600, filepath, filename, 10);
+		alert("return = "+ret);
+	}
+
+	function star_FindHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_FindHeadPhoto(port, '0' , 9600, 256, 10);
+		alert("return = "+ret);
+		Form1.FileName.value = Form1.StartOcx.pFilenameData;
+
+	}
+
+	function star_DelHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_DelHeadFile(port, '0' , 9600, filename, 10);
+		alert("return = "+ret);
+	}
+
+	function star_StarECard()
+	{
+		var port = Form1.Comm.value;
+		var tellername = Form1.TellerName.value;
+		var tellerno = Form1.TellerNo.value;
+		var filename = Form1.FileName.value;
+		var starlevel = Form1.StarLevel.value;
+
+		var ret = Form1.StartOcx.STAR_StartElectronicCard(port, '0' , 9600, tellername, tellerno, starlevel, filename, 10);
+		alert("return = "+ret);
+	}
+
+
+	function star_StarEvaluate()
+	{
+		var port = Form1.Comm.value;
+		var tellername = Form1.TellerName.value;
+		var tellerno = Form1.TellerNo.value;
+		var filename = Form1.FileName.value;
+		var starlevel = Form1.StarLevel.value;
+		var strvoice = Form1.StrVoice.value;
+		var stroperdata = Form1.strOperData.value;
+		var strdispdata = Form1.strDispData.value;
+		var strdisptimeout = Form1.strDispTimeout.value;
+
+		var ret = Form1.StartOcx.STAR_StartEvaluate(port, '0', 9600, tellerno, filename, tellername, stroperdata, strdispdata, strvoice, strdisptimeout, 10);
+		Form1.inforesult.value = Form1.StartOcx.InfoResult;
+		alert("return = "+ret);
+	}
+
+	function star_StarPDFSign()
+	{
+		var port = Form1.Comm.value;
+		var x_size = 800;
+		var y_size = 500;
+		var w_size = 500;
+		var h_size = 300;
+		var nSize = 8192;
+
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var strsigntype = Form1.signType.value;
+		var strpage = Form1.PAGE.value;
+		var strpdfpath = Form1.PDFPath.value;
+	//	var ret = Form1.StartOcx.STAR_QDGJJ_StartPDFSignByPath(port, '0' , 9600, strpdfpath, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 10, strsigntype);
+		var ret = Form1.StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 20, strsigntype);
+		alert("return = "+ret);
+		// Form1.SignInfo.value = Form1.StartOcx.picdata;
+		console.log(Form1.StartOcx.picdata);
+	}
+
+	function star_DownFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+		var filepath = Form1.FilePath.value;
+
+		var ret = Form1.StartOcx.STAR_DownFile(port, '0' , 9600, filepath, filename, strfiletype, 10);
+		alert("return = "+ret);
+	}
+
+	function star_FindFileList()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+
+		var ret = Form1.StartOcx.STAR_FindFileList(port, '0' , 9600, 1024, strfiletype, 10);
+		alert("return = "+ret);
+		Form1.FileName.value = Form1.StartOcx.pFilenameData;
+
+	}
+
+	function star_DelFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_DelFile(port, '0' , 9600, filename, strfiletype, 10);
+		alert("return = "+ret);
+	}
+
+	function star_PlayFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+		var isall = Form1.IsAll.value;
+
+		var ret = Form1.StartOcx.STAR_PlayFile(port, '0' , 9600, filename, strfiletype, isall, 10);
+		alert("return = "+ret);
+	}
+
+
+
+				</script>
+	</HEAD>
+
+	<BODY text="#0" MS_POSITIONING="GridLayout">
+		<form id="Form1" name="Form1" action="webform1.aspx" method="post">
+			<div id="StartOcxDemo" style="Z-INDEX: 101; BORDER-LEFT-COLOR: green; LEFT: 10px;
+			     BORDER-BOTTOM-COLOR: green; WIDTH: 0px; BORDER-TOP-STYLE: groove; BORDER-TOP-COLOR: green;
+				 BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; POSITION: absolute; TOP: 20px;
+				 HEIGHT: 0px; BACKGROUND-COLOR: #d4d0c8; BORDER-RIGHT-COLOR: green; BORDER-BOTTOM-STYLE: groove"
+				 noWrap language="javascript">
+				<OBJECT id = StartOcx
+				codebase="PinpadHandler.cab" height="1" width="1"
+				classid="clsid:E592E448-D6FC-41EC-980D-02DE93E7C315">
+				</OBJECT>
+      		<table style="FONT-SIZE: small; FONT-STYLE: normal; FONT-FAMILY: 新宋体; FONT-VARIANT: normal" bgColor="#d4d0c8">
+		<br><br>端口：<SELECT NAME="Comm" Width=60>
+			<OPTION VALUE="0" SELECTED>USB</OPTION>
+			<OPTION VALUE="1" >Com1</OPTION>
+			<OPTION VALUE="2" >Com2</OPTION>
+			<OPTION VALUE="3">Com3</OPTION>
+			<OPTION VALUE="4">Com4</OPTION>
+			<OPTION VALUE="5">Com5</OPTION>
+			<OPTION VALUE="6">Com6</OPTION>
+			<OPTION VALUE="7">Com7</OPTION>
+			<OPTION VALUE="8">Com8</OPTION>
+			<OPTION VALUE="9">Com9</OPTION>
+			<OPTION VALUE="10">Com10</OPTION>
+			<OPTION VALUE="11">Com11</OPTION>
+			<OPTION VALUE="12">Com12</OPTION>
+			<OPTION VALUE="13">Com13</OPTION>
+			<OPTION VALUE="14">Com14</OPTION>
+			<OPTION VALUE="15">Com15</OPTION>
+			<OPTION VALUE="16">Com16</OPTION>
+		</SELECT>
+
+		加密类型：<SELECT NAME="PinType" Width=60>
+			<OPTION VALUE="1" >DES</OPTION>
+			<OPTION VALUE="2" SELECTED>3DES</OPTION>
+			<OPTION VALUE="3">SM2</OPTION>
+			<OPTION VALUE="4">SM4</OPTION>
+		</SELECT>
+
+		次数：<SELECT NAME="Times" Width=60>
+			<OPTION VALUE="1" SELECTED>请输入密码</OPTION>
+			<OPTION VALUE="2" >请再输入一次</OPTION>
+		</SELECT>
+
+	  结束类型：<SELECT NAME="EndType" Width=60>
+			<OPTION VALUE="0" SELECTED>按确认或者指定长度</OPTION>
+			<OPTION VALUE="1" >按确认结束</OPTION>
+			<OPTION VALUE="2">到指定长度结束</OPTION>
+			<OPTION VALUE="3">按确认并到指定长度</OPTION>
+		</SELECT>
+
+		数字类型：<SELECT NAME="ControlType" Width=60>
+			<OPTION VALUE="0" SELECTED>任意数据</OPTION>
+			<OPTION VALUE="1" >数字串</OPTION>
+			<OPTION VALUE="2">金额</OPTION>
+		</SELECT>
+
+		交互类型：<SELECT NAME="MODEX" Width=60>
+			<OPTION VALUE="0" SELECTED>仅显示给用户看</OPTION>
+			<OPTION VALUE="1" >需要用户确认</OPTION>
+		</SELECT>
+
+	  是否电子签名：<SELECT NAME="ISSIGN" Width=60>
+			<OPTION VALUE="0" SELECTED>否</OPTION>
+			<OPTION VALUE="1" >是</OPTION>
+		</SELECT>
+
+		员工星级：<SELECT NAME="StarLevel" Width=60>
+			<OPTION VALUE="1" SELECTED>1</OPTION>
+			<OPTION VALUE="2" >2</OPTION>
+			<OPTION VALUE="3" >3</OPTION>
+			<OPTION VALUE="4" >4</OPTION>
+			<OPTION VALUE="5" >5</OPTION>
+		</SELECT>
+
+		操作后展示时间：<SELECT NAME="strDispTimeout" Width=60>
+			<OPTION VALUE="1" SELECTED>1</OPTION>
+			<OPTION VALUE="2" >2</OPTION>
+			<OPTION VALUE="3" >3</OPTION>
+			<OPTION VALUE="4" >4</OPTION>
+			<OPTION VALUE="5" >5</OPTION>
+			<OPTION VALUE="6" >6</OPTION>
+			<OPTION VALUE="7" >7</OPTION>
+			<OPTION VALUE="8" >8</OPTION>
+			<OPTION VALUE="9" >9</OPTION>
+			<OPTION VALUE="10" >10</OPTION>
+		</SELECT>
+
+	  返回类型：<SELECT NAME="signType" Width=60>
+			<OPTION VALUE="0" SELECTED>图片</OPTION>
+			<OPTION VALUE="1" >坐标</OPTION>
+			<OPTION VALUE="2" >图片和坐标</OPTION>
+		</SELECT>
+
+		从第几页开始显示：<SELECT NAME="PAGE" Width=60>
+			<OPTION VALUE="1" SELECTED>1</OPTION>
+			<OPTION VALUE="2" >2</OPTION>
+			<OPTION VALUE="3" >3</OPTION>
+			<OPTION VALUE="4" >4</OPTION>
+			<OPTION VALUE="5" >5</OPTION>
+		</SELECT>
+
+		文件类型：<SELECT NAME="FileType" Width=60>
+			<OPTION VALUE="1" SELECTED>头像图片</OPTION>
+			<OPTION VALUE="2" >广告图片</OPTION>
+			<OPTION VALUE="3" >视频</OPTION>
+			<OPTION VALUE="4" >音频</OPTION>
+			<OPTION VALUE="5" >mtu升级包</OPTION>
+			<OPTION VALUE="6" >pdf文件</OPTION>
+			<OPTION VALUE="7" >logo</OPTION>
+		</SELECT>
+
+		文件类型：<SELECT NAME="IsAll" Width=60>
+			<OPTION VALUE="1" SELECTED>单个播放</OPTION>
+			<OPTION VALUE="2" >全部播放</OPTION>
+		</SELECT>
+
+
+<tr><td>
+主秘钥号:<input id="MkeyID" style="WIDTH: 100px" name="MkeyID" value="0">
+工作秘钥号:<input id="WkeyID" style="WIDTH: 100px" name="WkeyID" value="0">
+密码长度:<input id="PinLen" style="WIDTH: 100px" name="PinLen" value="6">
+卡号:<input id="Account" style="WIDTH: 150px" name="Account" value="12345678912123">
+</td></tr>
+
+<tr><td>
+播放语音:<input id="StrVoice" style="WIDTH: 380px" name="StrVoice" value="请您输入">
+显示内容:<input id="StrInfo" style="WIDTH: 380px" name="StrInfo" value="请您好好的输入">
+</td></tr>
+
+<tr><td>
+员工姓名：<input id="TellerName" style="WIDTH: 100px" name="TellerName" value="123454">
+员工号：<input id="TellerNo" style="WIDTH: 100px" name="TellerNo" value="12">
+</td></tr>
+
+<tr><td>
+主秘钥（密文）：<input id="Mkey" style="WIDTH: 900px" name="Mkey" value="38383838383838383838383838383838">
+</td></tr>
+
+<tr><td>
+主秘钥（明文）：<input id="Mkey2" style="WIDTH: 900px" name="Mkey2" value="43A85A48523E9B35531671E2C4D3BF30">
+</td></tr>
+
+<tr><td>
+工作秘钥（密）：<input id="Wkey" style="WIDTH: 900px" name="Wkey"  value="43A85A48523E9B35531671E2C4D3BF30">
+</td></tr>
+
+<tr><td>
+工作秘钥（明）：<input id="Wkey" style="WIDTH: 900px" name="Wkey"  value="38383838383838383838383838383838">
+</td></tr>
+
+<tr><td>
+返回密码密文：<input id="Key" style="WIDTH: 900px" name="Key" >
+</td></tr>
+
+<tr><td>
+返回明文密码：<input id="Pin" style="WIDTH: 900px" name="Pin">
+</td></tr>
+
+<tr><td>
+设备序列号：<input id="SN" style="WIDTH: 900px" name="SN">
+</td></tr>
+
+<tr><td>
+签名信息：<input id="SignInfo" style="WIDTH: 900px" name="SignInfo">
+</td></tr>
+
+<tr><td>
+信息交互结果：<input id="inforesult" style="WIDTH: 900px" name="inforesult">
+</td></tr>
+
+<tr><td>
+文件路径：<input id="FilePath" style="WIDTH: 900px" name="FilePath" value="d:\青岛公积金柜内清测试\11.jpg">
+</td></tr>
+
+<tr><td>
+文件名称：<input id="FileName" style="WIDTH: 900px" name="FileName" value="11.jpg">
+</td></tr>
+
+<tr><td>
+评价界面的提示信息：<input id="strOperData" style="WIDTH: 900px" name="strOperData" value="评价显示内容">
+</td></tr>
+<tr><td>
+评价后的界面提示信息：<input id=" strDispData" style="WIDTH: 900px" name="strDispData" value="评价后显示内容">
+</td></tr>
+<tr><td>
+PDF文件数据：<input id="PDFPath" style="WIDTH: 900px" name="PDFPath" value="D:\123.pdf">
+</td></tr>
+
+<tr><td>
+<br><br>
+<input type="button" style="WIDTH: 150px" value="键盘初始化" onClick="star_PinResetKey()">
+<input type="button" style="WIDTH: 150px" value="输入数字" onClick="star_InPutNum()">
+<input type="button" style="WIDTH: 150px" value="播放语音" onClick="star_PlayVoice()">
+<input type="button" style="WIDTH: 150px" value="获取设备序列号" onClick="star_GetPinpadSN()">
+<input type="button" style="WIDTH: 150px" value="设置设备序列号" onClick="star_SetPinpadSN()">
+<input type="button" style="WIDTH: 150px" value="密钥初始化" onClick="star_ResetKey()">
+<input type="button" style="WIDTH: 150px" value="非加密读取密码" onClick="star_PinRead()">
+<input type="button" style="WIDTH: 150px" value="下载主密钥密文" onClick="star_PinDownLoadMkey()">
+<input type="button" style="WIDTH: 150px" value="下载工作密钥" onClick="star_DownLoadWkey()">
+<input type="button" style="WIDTH: 150px" value="读取加密键盘密码密文" onClick="star_GetEncPin()">
+<input type="button" style="WIDTH: 150px" value="ANSI98读密文" onClick="star_Ansi98GetPin()">
+<input type="button" style="WIDTH: 150px" value="启动信息交互" onClick="star_StartInfoHtml()">
+<input type="button" style="WIDTH: 150px" value="下载员工头像" onClick="star_DownHeadFile()">
+<input type="button" style="WIDTH: 150px" value="查询员工头像" onClick="star_FindHeadFile()">
+<input type="button" style="WIDTH: 150px" value="删除员工头像" onClick="star_DelHeadFile()">
+<input type="button" style="WIDTH: 150px" value="启动电子工牌" onClick="star_StarECard()">
+<input type="button" style="WIDTH: 150px" value="启动评价" onClick="star_StarEvaluate()">
+<input type="button" style="WIDTH: 150px" value="推送PDF签字" onClick="star_StarPDFSign()">
+<input type="button" style="WIDTH: 150px" value="下载文件" onClick="star_DownFile()">
+<input type="button" style="WIDTH: 150px" value="查询文件列表" onClick="star_FindFileList()">
+<input type="button" style="WIDTH: 150px" value="删除文件" onClick="star_DelFile()">
+<input type="button" style="WIDTH: 150px" value="播放文件" onClick="star_PlayFile()">
+</td></tr>
+
+				</table>
+			</div>
+		</form>
+	</BODY>
+</HTML>
