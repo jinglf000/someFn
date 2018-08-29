@@ -33,13 +33,17 @@ class LikeButton {
         <span class="like-text">${likeText}</span>
       </button>
     `)
+    ele.addEventListener('click', this.changleLikeText.bind(this), false);
+    if (this.el) {
+      const eleParent = this.el.parentElement;
+      eleParent.insertBefore(ele, this.el);
+      eleParent.removeChild(this.el);
+    }
     this.el = ele;
-    this.el.addEventListener('click', this.changleLikeText.bind(this), false);
-    return this.el;
+    return ele;
   }
 }
 
 var btn = new LikeButton();
 document.body.append(btn.render());
 
-console.log('runder ');
