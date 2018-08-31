@@ -5,11 +5,225 @@
 			<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
 			<meta content="C#" name="CODE_LANGUAGE">
 			<meta content="JavaScript" name="vs_defaultClientScript">
-      <meta http-equiv="X-UA-Compatible" content="IE=5">
 			<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
 			<script language="javascript" id="clientEventHandlersJS"></script>
 			<TITLE>StartOcxDemo</TITLE>
 				<script type="text/javascript">
+
+	var IcType = 0;
+
+	function star_PinResetKey()
+	{
+		var port = Form1.Comm.value;
+		var ret = Form1.StartOcx.STAR_Pin_Reset( port, '0' , 9600);
+		alert("return = "+ret);
+	}
+
+	function star_InPutNum()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var iControlType = Form1.ControlType.value;
+
+		var ret = Form1.StartOcx.STAR_InputNumber(port, '0' , 9600,  iControlType, strvoice, 10);
+		alert("return = "+ret);
+	}
+
+	function star_PlayVoice()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+
+		var ret = Form1.StartOcx.STAR_PlayVoice(port, '0' , 9600, strvoice, 10);
+		alert("return = "+ret);
+	}
+
+	function star_GetPinpadSN()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_GetPinPadSN(port, '0' , 9600, 10);
+		alert("return = "+ret);
+		Form1.SN.value = Form1.StartOcx.sn;
+	}
+
+	function star_SetPinpadSN()
+	{
+		var port = Form1.Comm.value;
+		var sn = Form1.SN.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_SetPinPadSN(port, '0' , 9600, sn,  10);
+		alert("return = "+ret);
+	}
+
+	function star_ResetKey()
+	{
+		var port = Form1.Comm.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_ResetKey(port, '0' , 9600);
+		alert("return = "+ret);
+	}
+
+	function star_PinRead()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var times = Form1.Times.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_Read(port, '0' , 9600, times, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Pin.value = Form1.StartOcx.pin;
+
+	}
+
+	function star_PinDownLoadMkey()
+	{
+		var port = Form1.Comm.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var mkey = Form1.Mkey.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_DownLoadMkey(port, '0' , 9600, pintype, mkeyid, mkey, 10);
+		alert("return = "+ret);
+	}
+	function star_DownLoadWkey()
+	{
+		var port = Form1.Comm.value;
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var wkey = Form1.Wkey.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_DownLoadWkey( port, '0' , 9600, pintype, mkeyid, wkeyid, wkey, 10);
+		alert("return = "+ret);
+	}
+
+	function star_GetEncPin()
+	{
+		var port = Form1.Comm.value;
+		var times = Form1.Times.value;
+		var endtype = Form1.EndType.value;
+		var pinlen = Form1.PinLen.value;
+
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_GetEncPin( port, '0' , 9600, pintype, mkeyid, wkeyid, times, endtype, pinlen, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Key.value = Form1.StartOcx.EncPin;
+	}
+
+	function star_Ansi98GetPin()
+	{
+		var port = Form1.Comm.value;
+		var times = Form1.Times.value;
+		var endtype = Form1.EndType.value;
+		var pinlen = Form1.PinLen.value;
+
+		var wkeyid = Form1.WkeyID.value;
+		var mkeyid = Form1.MkeyID.value;
+		var pintype = Form1.PinType.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var account = Form1.Account.value;
+
+		var ret = Form1.StartOcx.STAR_Pin_Ansi98GetPin( port, '0' , 9600, pintype, mkeyid, wkeyid, times, endtype, pinlen, account, strvoice, strinfo, 10);
+		alert("return = "+ret);
+		Form1.Key.value = Form1.StartOcx.CipherPin;
+	}
+
+	function star_StartInfoHtml()
+	{
+		var port = Form1.Comm.value;
+		var strvoice = Form1.StrVoice.value;
+		var strinfo = Form1.StrInfo.value;
+		var modex = Form1.MODEX.value;
+		var isSign = Form1.ISSIGN.value;
+
+		var ret = Form1.StartOcx.STAR_StartInfoHtml(port, '0' , 9600, modex, strvoice, strinfo, isSign, 10);
+		alert("return = "+ret);
+		Form1.SignInfo.value = Form1.StartOcx.sResult;
+		Form1.inforesult.value = Form1.StartOcx.InfoResult;
+	}
+
+	function star_DownHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+		var filepath = Form1.FilePath.value;
+
+		var ret = Form1.StartOcx.STAR_DownHeadFile(port, '0' , 9600, filepath, filename, 10);
+		alert("return = "+ret);
+	}
+
+	function star_FindHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_FindHeadPhoto(port, '0' , 9600, 256, 10);
+		alert("return = "+ret);
+		Form1.FileName.value = Form1.StartOcx.pFilenameData;
+
+	}
+
+	function star_DelHeadFile()
+	{
+		var port = Form1.Comm.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_DelHeadFile(port, '0' , 9600, filename, 10);
+		alert("return = "+ret);
+	}
+
+	function star_StarECard()
+	{
+		var port = Form1.Comm.value;
+		var tellername = Form1.TellerName.value;
+		var tellerno = Form1.TellerNo.value;
+		var filename = Form1.FileName.value;
+		var starlevel = Form1.StarLevel.value;
+
+		var ret = Form1.StartOcx.STAR_StartElectronicCard(port, '0' , 9600, tellername, tellerno, starlevel, filename, 10);
+		alert("return = "+ret);
+	}
+
+
+	function star_StarEvaluate()
+	{
+		var port = Form1.Comm.value;
+		var tellername = Form1.TellerName.value;
+		var tellerno = Form1.TellerNo.value;
+		var filename = Form1.FileName.value;
+		var starlevel = Form1.StarLevel.value;
+		var strvoice = Form1.StrVoice.value;
+		var stroperdata = Form1.strOperData.value;
+		var strdispdata = Form1.strDispData.value;
+		var strdisptimeout = Form1.strDispTimeout.value;
+
+		var ret = Form1.StartOcx.STAR_StartEvaluate(port, '0', 9600, tellerno, filename, tellername, stroperdata, strdispdata, strvoice, strdisptimeout, 10);
+		Form1.inforesult.value = Form1.StartOcx.InfoResult;
+		alert("return = "+ret);
+	}
+
+  function getPDF(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url);
+    xhr.send();
+    return xhr;
+  }
+
+  var xhr = getPDF('/PDF/123.pdf');
+  var str = ''
+  xhr.onload = function () {
+    str = xhr.response;
+  }
+
 	function star_StarPDFSign()
 	{
 		var port = Form1.Comm.value;
@@ -17,19 +231,68 @@
 		var y_size = 500;
 		var w_size = 500;
 		var h_size = 300;
-		var nSize = 8192;
+		var nSize = 4096;
 
 		var strvoice = Form1.StrVoice.value;
 		var strinfo = Form1.StrInfo.value;
 		var strsigntype = Form1.signType.value;
-		var strpage = Form1.PAGE.value;
-		var strpdfpath = Form1.PDFPath.value;
+    var strpage = Form1.PAGE.value;
+
+    // var strpdfpath = Form1.PDFPath.value;
+    var strpdfpath = str;
+    alert(strpdfpath);
 	//	var ret = Form1.StartOcx.STAR_QDGJJ_StartPDFSignByPath(port, '0' , 9600, strpdfpath, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 10, strsigntype);
-		var ret = Form1.StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 20, strsigntype);
+		var ret = Form1.StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 10, strsigntype);
 		alert("return = "+ret);
-		// Form1.SignInfo.value = Form1.StartOcx.picdata;
-		console.log(Form1.StartOcx.picdata);
+		Form1.SignInfo.value = Form1.StartOcx.picdata;
+
 	}
+
+	function star_DownFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+		var filepath = Form1.FilePath.value;
+
+		var ret = Form1.StartOcx.STAR_DownFile(port, '0' , 9600, filepath, filename, strfiletype, 10);
+		alert("return = "+ret);
+	}
+
+	function star_FindFileList()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+
+		var ret = Form1.StartOcx.STAR_FindFileList(port, '0' , 9600, 1024, strfiletype, 10);
+		alert("return = "+ret);
+		Form1.FileName.value = Form1.StartOcx.pFilenameData;
+
+	}
+
+	function star_DelFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+
+		var ret = Form1.StartOcx.STAR_DelFile(port, '0' , 9600, filename, strfiletype, 10);
+		alert("return = "+ret);
+	}
+
+	function star_PlayFile()
+	{
+		var port = Form1.Comm.value;
+		var strfiletype = Form1.FileType.value;
+		var filename = Form1.FileName.value;
+		var isall = Form1.IsAll.value;
+
+		var ret = Form1.StartOcx.STAR_PlayFile(port, '0' , 9600, filename, strfiletype, isall, 10);
+		alert("return = "+ret);
+	}
+
+
+
 				</script>
 	</HEAD>
 
@@ -65,7 +328,61 @@
 			<OPTION VALUE="16">Com16</OPTION>
 		</SELECT>
 
+		加密类型：<SELECT NAME="PinType" Width=60>
+			<OPTION VALUE="1" >DES</OPTION>
+			<OPTION VALUE="2" SELECTED>3DES</OPTION>
+			<OPTION VALUE="3">SM2</OPTION>
+			<OPTION VALUE="4">SM4</OPTION>
+		</SELECT>
 
+		次数：<SELECT NAME="Times" Width=60>
+			<OPTION VALUE="1" SELECTED>请输入密码</OPTION>
+			<OPTION VALUE="2" >请再输入一次</OPTION>
+		</SELECT>
+
+	  结束类型：<SELECT NAME="EndType" Width=60>
+			<OPTION VALUE="0" SELECTED>按确认或者指定长度</OPTION>
+			<OPTION VALUE="1" >按确认结束</OPTION>
+			<OPTION VALUE="2">到指定长度结束</OPTION>
+			<OPTION VALUE="3">按确认并到指定长度</OPTION>
+		</SELECT>
+
+		数字类型：<SELECT NAME="ControlType" Width=60>
+			<OPTION VALUE="0" SELECTED>任意数据</OPTION>
+			<OPTION VALUE="1" >数字串</OPTION>
+			<OPTION VALUE="2">金额</OPTION>
+		</SELECT>
+
+		交互类型：<SELECT NAME="MODEX" Width=60>
+			<OPTION VALUE="0" SELECTED>仅显示给用户看</OPTION>
+			<OPTION VALUE="1" >需要用户确认</OPTION>
+		</SELECT>
+
+	  是否电子签名：<SELECT NAME="ISSIGN" Width=60>
+			<OPTION VALUE="0" SELECTED>否</OPTION>
+			<OPTION VALUE="1" >是</OPTION>
+		</SELECT>
+
+		员工星级：<SELECT NAME="StarLevel" Width=60>
+			<OPTION VALUE="1" SELECTED>1</OPTION>
+			<OPTION VALUE="2" >2</OPTION>
+			<OPTION VALUE="3" >3</OPTION>
+			<OPTION VALUE="4" >4</OPTION>
+			<OPTION VALUE="5" >5</OPTION>
+		</SELECT>
+
+		操作后展示时间：<SELECT NAME="strDispTimeout" Width=60>
+			<OPTION VALUE="1" SELECTED>1</OPTION>
+			<OPTION VALUE="2" >2</OPTION>
+			<OPTION VALUE="3" >3</OPTION>
+			<OPTION VALUE="4" >4</OPTION>
+			<OPTION VALUE="5" >5</OPTION>
+			<OPTION VALUE="6" >6</OPTION>
+			<OPTION VALUE="7" >7</OPTION>
+			<OPTION VALUE="8" >8</OPTION>
+			<OPTION VALUE="9" >9</OPTION>
+			<OPTION VALUE="10" >10</OPTION>
+		</SELECT>
 
 	  返回类型：<SELECT NAME="signType" Width=60>
 			<OPTION VALUE="0" SELECTED>图片</OPTION>
@@ -81,7 +398,20 @@
 			<OPTION VALUE="5" >5</OPTION>
 		</SELECT>
 
+		文件类型：<SELECT NAME="FileType" Width=60>
+			<OPTION VALUE="1" SELECTED>头像图片</OPTION>
+			<OPTION VALUE="2" >广告图片</OPTION>
+			<OPTION VALUE="3" >视频</OPTION>
+			<OPTION VALUE="4" >音频</OPTION>
+			<OPTION VALUE="5" >mtu升级包</OPTION>
+			<OPTION VALUE="6" >pdf文件</OPTION>
+			<OPTION VALUE="7" >logo</OPTION>
+		</SELECT>
 
+		文件类型：<SELECT NAME="IsAll" Width=60>
+			<OPTION VALUE="1" SELECTED>单个播放</OPTION>
+			<OPTION VALUE="2" >全部播放</OPTION>
+		</SELECT>
 
 
 <tr><td>
@@ -152,7 +482,7 @@
 评价后的界面提示信息：<input id=" strDispData" style="WIDTH: 900px" name="strDispData" value="评价后显示内容">
 </td></tr>
 <tr><td>
-PDF文件数据：<input id="PDFPath" style="WIDTH: 900px" name="PDFPath" value="D:\123.pdf">
+PDF文件数据：<input id="PDFPath" style="WIDTH: 900px" name="PDFPath" value="D:\北控三兴pdf回显版本及固件升级工具（cab包方式）\ocx">
 </td></tr>
 
 <tr><td>

@@ -2,26 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=5">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=5"> -->
   <META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
   <META NAME="GENERATOR" Content="Microsoft Developer Studio">
   <meta content="C#" name="CODE_LANGUAGE">
   <meta content="JavaScript" name="vs_defaultClientScript">
   <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
   <script language="javascript" id="clientEventHandlersJS"></script>
-
+    <script src="./bse64.js"></script>
   <title>PDF 文件签名</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <form id="form"  action="webform1.aspx" method="post">
-    <OBJECT id ="StartOcx"  codebase="PinpadHandler.cab" height="1" width="1"
+  <OBJECT id ="StartOcx"  codebase="PinpadHandler.cab" height="1" width="1"
     classid="clsid:E592E448-D6FC-41EC-980D-02DE93E7C315"> </OBJECT>
-    <div class="controls">
-      <button id="btn_sign" onclick="handleClick()">点击推送签名</button>
-
-    </div>
-  </form>
+  <div class="controls">
+    <button id="btn_sign" >点击推送签名</button>
+  </div>
 
 
   <script>
@@ -31,14 +28,25 @@
 
     var eleBtnSign = document.getElementById('btn_sign');
     var StartOcx = document.getElementById('StartOcx');
-    // eleBtnSign.addEventListener('click', function (e) {
-    //   e.preventDefault();
-
-    // })
+    eleBtnSign.addEventListener('click', function (e) {
+      e.preventDefault();
+      handleClick();
+    })
 
     function handleClick() {
-      getPDF(url).onload = function (res) {
-        star_StarPDFSign(res.response);
+      var xhr = getPDF(url);
+      xhr.onload = function () {
+        var data = xhr.response;
+        console.log(data);
+        star_StarPDFSign(data);
+        // var reader = new FileReader();
+        // reader.readAsArrayBuffer(xhr.response);
+        // reader.onload = function (e) {
+        //   var data = e.target.result;
+        //   console.log(data);
+        //   // var enc = new TextDecoder('utf-8');
+        //   // console.log(enc.decode(data));
+        // }
       }
     }
 
@@ -64,6 +72,7 @@
       var xhr = new XMLHttpRequest();
       xhr.open('get', url);
       xhr.send();
+      // xhr.responseType="blob";
       return xhr;
     }
     /**
@@ -81,11 +90,12 @@
         strsigntype = '0', // 0:图片,1:坐标,2:图片和坐标
         strpage = 0; // 开始页数
       var strpdfpath = ''; // pdf 路径字符串
+      // console.log(pdfStr);
       //	var ret = Form1.StartOcx.STAR_QDGJJ_StartPDFSignByPath(port, '0' , 9600, strpdfpath, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 10, strsigntype);
-      var ret = form.StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 20, strsigntype);
+      var ret = StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 20, strsigntype);
+      alert('pic---Data', StartOcx.picdata);
       alert("return = "+ret);
       // Form1.SignInfo.value = Form1.StartOcx.picdata;
-      console.log(form.StartOcx.picdata);
     }
   </script>
   </OBJECT>

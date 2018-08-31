@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task</title>
+</head>
+<body>
+  <textarea name="" id="log" cols="30" rows="10"></textarea>
+  <input type="text" id="input">
+  <script>
+    var l= document.getElementById('log');
+    var i= document.getElementById('input');
+    i.onblur= function() {
+        l.value+= 'blur\n';
+    };
+    setTimeout(function() {
+        l.value+= 'log in\n';
+        l.focus();
+        l.value+= 'log out\n';
+    }, 100);
+    i.focus();
+  </script>
+</body>
+</html>
