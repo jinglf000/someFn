@@ -9,18 +9,6 @@
 <body>
   <textarea name="" id="log" cols="30" rows="10"></textarea>
   <input type="text" id="input">
-  <script>
-    var l= document.getElementById('log');
-    var i= document.getElementById('input');
-    i.onblur= function() {
-        l.value+= 'blur\n';
-    };
-    setTimeout(function() {
-        l.value+= 'log in\n';
-        l.focus();
-        l.value+= 'log out\n';
-    }, 100);
-    i.focus();
-  </script>
+  <script src="./index.js"></script>
 </body>
 </html>
