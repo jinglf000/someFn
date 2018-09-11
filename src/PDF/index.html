@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=5"> -->
+  <META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
+  <META NAME="GENERATOR" Content="Microsoft Developer Studio">
+  <meta content="C#" name="CODE_LANGUAGE">
+  <meta content="JavaScript" name="vs_defaultClientScript">
+  <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+  <script language="javascript" id="clientEventHandlersJS"></script>
+    <script src="./bse64.js"></script>
+  <title>PDF 文件签名</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <OBJECT id ="StartOcx"  codebase="PinpadHandler.cab" height="1" width="1"
+    classid="clsid:E592E448-D6FC-41EC-980D-02DE93E7C315"> </OBJECT>
+  <div class="controls">
+    <button id="btn_sign" >点击推送签名</button>
+  </div>
+
+
+  <script>
+    // xhr 请求
+
+    var url = '/PDF/123.pdf'
+
+    var eleBtnSign = document.getElementById('btn_sign');
+    var StartOcx = document.getElementById('StartOcx');
+    eleBtnSign.addEventListener('click', function (e) {
+      e.preventDefault();
+      handleClick();
+    })
+
+    function handleClick() {
+      var xhr = getPDF(url);
+      xhr.onload = function () {
+        var data = xhr.response;
+        console.log(data);
+        star_StarPDFSign(data);
+        // var reader = new FileReader();
+        // reader.readAsArrayBuffer(xhr.response);
+        // reader.onload = function (e) {
+        //   var data = e.target.result;
+        //   console.log(data);
+        //   // var enc = new TextDecoder('utf-8');
+        //   // console.log(enc.decode(data));
+        // }
+      }
+    }
+
+    /**
+     * @param {String} url 文件地址
+     * @return {XHR} 返回promise
+     */
+    // function getPdf(url) {
+    //   return new Promise((resolve, reject) => {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('get', url);
+    //     xhr.onload = function (res) {
+    //       var str = res.response;
+    //       resolve(str)
+    //     }
+    //     xhr.onerror = function (res) {
+    //       reject(res);
+    //     }
+    //     xhr.send()
+    //   });
+    // }
+    function getPDF(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', url);
+      xhr.send();
+      // xhr.responseType="blob";
+      return xhr;
+    }
+    /**
+     * @param {String} str 文件字符串
+     */
+    function star_StarPDFSign(str){
+      var port = 0,
+        x_size = 800,
+        y_size = 500,
+        w_size = 500,
+        h_size = 300,
+        nSize = 8192,
+        strvoice = '请您输入XXX',// 声音提示内容
+        strinfo = '显示内容',// 提示内容
+        strsigntype = '0', // 0:图片,1:坐标,2:图片和坐标
+        strpage = 0; // 开始页数
+      var strpdfpath = ''; // pdf 路径字符串
+      // console.log(pdfStr);
+      //	var ret = Form1.StartOcx.STAR_QDGJJ_StartPDFSignByPath(port, '0' , 9600, strpdfpath, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 10, strsigntype);
+      var ret = StartOcx.STAR_BKSX_StartPDFSign(port, '0' , 9600, strpdfpath, nSize, strpage, x_size, y_size, w_size, h_size, strvoice, strinfo, 20, strsigntype);
+      alert('pic---Data', StartOcx.picdata);
+      alert("return = "+ret);
+      // Form1.SignInfo.value = Form1.StartOcx.picdata;
+    }
+  </script>
+  </OBJECT>
+</body>
+</html>

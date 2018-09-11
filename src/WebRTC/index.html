@@ -6,14 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>WebRTC</title>
   <style>
+    .cover {
+      position: absolute;
+      top:0;
+      left: 0;
+      border: 1px solid red;
+    }
+    video {
+      display: none;
+    }
+    .canvas_wrap {
+      position: relative;
+    }
   </style>
 </head>
 <body>
   <h1>Web RTC</h1>
-  <video autoplay playsinline></video>
-  <canvas id="photo" width="640" height="480"></canvas>
-  <button id="btn">点击截图</button>
+  <div class="canvas_wrap">
+    <video autoplay playsinline width="320" height="240"></video>
+    <canvas id="canvas_photo" width="320" height="240"></canvas>
+    <canvas id="canvas_draw" class="cover" width="320" height="240"></canvas>
+  </div>
+  <button id="btn_snap">点击截图</button>
+  <button id="btn_track">点击捕获</button>
+  <button id="btn_stop">停止捕获</button>
+  <input id="input_log"/>
   <!-- <script src="./main.js"></script> -->
+  <script src="./ie/js/track/tracking.js"></script>
+  <script src="./ie/js/track/data/face-min.js"></script>
   <script src="./getPhoto.js"></script>
+  <script>
+    // var btnTrack = document.getElementById('btn_track');
+    // var canvas = document.getElementById('photo');
+    // var cover = document.getElementById('cover');
+
+    // var coverCtx = cover.getContext('2d');
+    // var tracker = new tracking.ObjectTracker(['face']);
+    // tracker.setStepSize(1.7);
+
+    // // track
+    // btnTrack.addEventListener('click', function () {
+    //   tracking.track(canvas, tracker);
+    // });
+
+  </script>
 </body>
 </html>
