@@ -34,7 +34,7 @@ testTwo();
 /**
  * promise.resolve() 或者等价于此 new Promise((resolve, reject) => { resolve()}) 其执行在
  * setTimeout(() => {}, 0); 之前
- * 
+ *
  */
 function example() {
   const xx = async function () {};// xx() 返回值为 Promise{{resolved}}；
