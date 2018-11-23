@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>leak</title>
+</head>
+<body>
+  <script>
+    let theThing = null;
+
+const replaceThing = function () {
+
+  // let originalThing = theThing;
+
+  // let unused = function () {
+
+  //   if (originalThing)
+
+  //     console.log("hi");
+
+  // };
+
+  theThing = {
+
+    longStr: new Array(1000000).join('*'),
+
+    someMethod: function () {
+
+      console.log(someMessage);
+
+    }
+
+  };
+
+};
+
+
+for (let i = 0; i < 5000; i ++) {
+    replaceThing();
+}
+  </script>
+</body>
+</html>
