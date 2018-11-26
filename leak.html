@@ -16,7 +16,7 @@ const replaceThing = function () {
 
   // let unused = function () {
 
-  //   if (originalThing)
+  //   if (true)
 
   //     console.log("hi");
 
@@ -28,7 +28,7 @@ const replaceThing = function () {
 
     someMethod: function () {
 
-      console.log(someMessage);
+      console.log('');
 
     }
 
@@ -37,9 +37,21 @@ const replaceThing = function () {
 };
 
 
-for (let i = 0; i < 5000; i ++) {
+for (let i = 0; i < 500; i ++) {
     replaceThing();
 }
+
+
+// const xxx = function () {
+//   const x = new Array(1000000).join('x');
+
+//   return  {
+//     xxxfn() {
+//       console.log('clsure');
+//     }
+//   }
+// };
+// xxx();
   </script>
 </body>
 </html>

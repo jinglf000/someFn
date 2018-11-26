@@ -6,17 +6,22 @@ const port = 3000;
 
 let theThing = null;
 
+// let list = [];
+
 const replaceThing = function () {
 
   let originalThing = theThing;
 
-  // let unused = function () {
+  let unused = function () {
 
-  //   if (originalThing)
+    if (originalThing)
 
-  //     console.log("hi");
+      console.log("hi");
 
-  // };
+  };
+
+
+  // const stx = new Array(1000000).join('--0-0-0-0-0-')
 
   theThing = {
 
@@ -24,11 +29,13 @@ const replaceThing = function () {
 
     someMethod: function () {
 
-      console.log(someMessage);
+      console.log(originalThing);
 
     }
 
   };
+
+  // list.push(new Array(1000000).join('-*-'));
 
 };
 
