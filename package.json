@@ -28,7 +28,7 @@
     "art-template": "^4.12.2",
     "autoprefixer": "^8.4.1",
     "axios": "^0.18.0",
-    "browser-sync": "^2.18.12",
+    "browser-sync": "^2.26.3",
     "chalk": "^1.1.3",
     "cheerio": "^1.0.0-rc.2",
     "del": "^3.0.0",
