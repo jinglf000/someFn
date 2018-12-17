@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<!-- this starts off as http://example.com/line?x=5 -->
+<head>
+  <title>Line Game - 5</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<p>You are at coordinate <span id="coord">5</span> on the line.</p>
+<p>
+ <a href="?x=6" onclick="go(1); return false;">Advance to 6</a> or
+ <a href="?x=4" onclick="go(-1); return false;">retreat to 4</a>?
+</p>
+
+<span>
+
+</span>
+<script>
+ var currentPage = 5; // prefilled by server！！！！
+ function go(d) {
+     setupPage(currentPage + d);
+     history.pushState(currentPage, document.title, '?x=' + currentPage);
+ }
+ window.onpopstate = function(event) {
+     setupPage(event.state);
+     console.log(event)
+ }
+ function setupPage(page) {
+     currentPage = page;
+     document.title = 'Line Game - ' + currentPage;
+     document.getElementById('coord').textContent = currentPage;
+     document.links[0].href = '?x=' + (currentPage+1);
+     document.links[0].textContent = 'Advance to ' + (currentPage+1);
+     document.links[1].href = '?x=' + (currentPage-1);
+     document.links[1].textContent = 'retreat to ' + (currentPage-1);
+ }
+</script>
+</body>
