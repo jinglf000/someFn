@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sticky</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      border: 1px solid red;
+    }
+    .header {
+      position: sticky;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+      font-size: 24px;
+      text-align: center;
+      background-color: yellow;
+    }
+    .main {
+      height: 1000px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <main class="main">MAIN</main>
+    <header class="header"> HEADER</header>
+  </div>
+  <script>
+    var box = document.querySelector('.box');
+    var header = document.querySelector('.header');
+    var main = document.querySelector('.main');
+  </script>
+</body>
+</html>

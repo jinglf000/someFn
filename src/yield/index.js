@@ -10,6 +10,7 @@
  * yield 异步实现
  */
 function* asyncFn() {
+  console.log('yield 表达式~~~~  ');
   const data = yield getData();
   console.log(data);
 }
@@ -28,10 +29,11 @@ function getData() {
 
 const fn = asyncFn();
 const g = fn.next();
+// const g = 1;
 
-console.log(g);
+console.log(g, 'ggggg');
 
 g.value.then((data) => {
   console.log('执行了 g.value.then =========== ');
-  fn.next(data);
+  console.log(fn.next(data));
 });
