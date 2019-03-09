@@ -1,7 +1,6 @@
 /*
  试着写出数字的打印顺序
  */
-
 // 返回Promise的函数
 function asyncFn(name) {
   return new Promise((resolve, reject) => {
@@ -34,7 +33,7 @@ async function test() {
     console.log(7);
     console.log(qq2);
   } catch (err) {
-    console.log('\n',err, '发生了错误');
+    console.log('\n', err, '发生了错误');
   }
   console.log(qq1);
   console.log(8);
@@ -42,14 +41,16 @@ async function test() {
 }
 console.log(1);
 
-test().then(() => {
-    console.log('test then')
-}).catch(() => {
+test()
+  .then(() => {
+    console.log('test then');
+  })
+  .catch(() => {
     console.log('test catch');
-})
+  });
 console.log(2);
 
 // test 函数执行完成返回的仍是promise，如果test()没有catch来捕获异常
 // 程序会报错
-// 
-// 
+//
+//

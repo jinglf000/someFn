@@ -14,17 +14,17 @@
 
 // Promise.resolve();// reutrn fulfilled promise
 
-const fn = async (flag) => {
+const fn = async flag => {
   if (flag) {
     return Promise.resolve('resolved');
   } else {
     return Promise.reject('rejected');
   }
-}
+};
 (async () => {
   const data = await fn();
   console.log(data);
-})()
+})();
 
 console.log(fn(true));
 // 返回的Promise为pending，
