@@ -3,22 +3,18 @@ var nes = new Promise((resolve, reject) => {
     return resolve(222);
   }, 100);
 }).then(a => {
-  // console.log(a);
   return Promise.reject(11);
-}); // resolved 222
-// console.log(nes);
+});
+
 var pro = new Promise((resolve, reject) => {
   setTimeout(() => {
     try {
       resolve(q);
     } catch (e) {
-      // console.log(e);
       reject(e);
     }
   }, 200);
-}).catch(e => {
-  // console.log(e);
-}); // err
+}).catch(e => {});
 
 function fnAll(arr) {
   return new Promise((resolve, reject) => {
