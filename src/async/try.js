@@ -9,3 +9,18 @@ new Promise(resolve => {
 }).catch(s => {
   console.log(s);
 });
+
+try {
+  setTimeout(() => {
+    mm + 12;
+  }, 0);
+} catch (e) {
+  console.log(e);
+}
+console.log(12);
+
+function go() {
+  console.log('go');
+}
+
+go(console.log('12'));
