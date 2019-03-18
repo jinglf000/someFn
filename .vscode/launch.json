@@ -5,6 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      // "url": "http://localhost:8080/index.html",
+      // "webRoot": "${workspaceFolder}/src"
+      "file": "${workspaceFolder}/src/index.html"
+    },
+
+    {
       "type": "node",
       "request": "launch",
       "name": "调试js文件",
