@@ -13,6 +13,7 @@ const globs = {};
 
 // 资源路径
 globs.assets = [
+  '/**/*.*(avi|mp4)',
   '/**/*.css',
   '/**/*.js',
   '/**/*.jsp',
